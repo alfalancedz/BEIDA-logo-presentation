@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#f58a1f" name="theme-color"/>
+<title>BEIDA — Logo Presentation</title>
+<style>
+    @font-face {
+      font-family: "Orkney";
+      src: local("Orkney"), local("ORKNEY");
+      font-display: swap;
+    }
+
+    :root {
+      --orange: #f58a1f;
+      --orange-dark: #df7410;
+      --ink: #101010;
+      --muted: #77736e;
+      --paper: #fffdfb;
+      --line: #e9e4de;
+      --soft: #f7f3ee;
+      --white: #ffffff;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(30, 22, 12, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Orkney", "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,253,251,.9); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(233,228,222,.85);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { font-weight: 900; font-size: 1.2rem; letter-spacing: .13em; direction: ltr; }
+    .brand span { color: var(--orange); }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: #4d4944; font-size: .9rem; }
+    .nav-links a:hover { color: var(--orange-dark); }
+    .nav-cta {
+      border: 0; background: var(--ink); color: white; padding: 9px 17px;
+      border-radius: 999px; font-size: .86rem;
+    }
+
+    .hero {
+      min-height: 650px; display: grid; place-items: center; position: relative; overflow: hidden;
+      padding: 80px 0 90px; background:
+      radial-gradient(circle at 15% 20%, rgba(245,138,31,.10), transparent 27%),
+      radial-gradient(circle at 88% 85%, rgba(245,138,31,.08), transparent 24%), var(--paper);
+    }
+    .hero-content { text-align: center; width: min(900px, 100%); position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: var(--orange-dark);
+      text-transform: uppercase; letter-spacing: .2em; font-size: .76rem; font-weight: 800;
+      direction: ltr;
+    }
+    .eyebrow:before, .eyebrow:after { content: ""; height: 1px; width: 30px; background: currentColor; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    
+    .hero h1 {
+      direction: ltr; font-size: clamp(3.8rem, 11vw, 8.8rem); line-height: .98; margin: 25px 0 14px;
+      letter-spacing: -.075em; font-weight: 950;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-subtitle { font-size: clamp(.9rem, 2vw, 1.1rem); color: #77716b; letter-spacing: .32em; direction: ltr; }
+    
+    .logo-stage {
+      width: min(720px, 100%); min-height: 260px; margin: 42px auto 0; display: grid; place-items: center;
+      background: white; border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow);
+      padding: 32px;
+    }
+    .logo-stage img { display: block; width: min(580px, 100%); height: auto; max-height: 220px; object-fit: contain; }
+    .logo-fallback { display: none; text-align: center; direction: ltr; }
+    .hero-note { margin: 25px auto 0; max-width: 590px; color: #68625c; font-size: .96rem; }
+
+    section { padding: 100px 0; }
+    .section-head { max-width: 650px; margin-bottom: 42px; }
+    .kicker { color: var(--orange-dark); font-size: .77rem; font-weight: 800; letter-spacing: .16em; direction: ltr; display: inline-block; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.25; margin: 10px 0 15px; letter-spacing: -.04em; }
+    .section-head p { margin: 0; color: var(--muted); }
+    
+    .story-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: stretch; }
+    .story-card { border-radius: var(--radius); padding: clamp(26px, 4vw, 45px); background: var(--soft); }
+    .story-card.dark { background: var(--ink); color: white; position: relative; overflow: hidden; }
+    .story-card h3 { margin: 0 0 14px; font-size: 1.35rem; position: relative; z-index: 1; }
+    .story-card p { margin: 0; color: #6f6962; position: relative; z-index: 1; }
+    .story-card.dark p { color: #c9c5c0; }
+    .quote-mark { color: var(--orange); font-size: 3rem; line-height: 1; margin-bottom: 14px; }
+
+    .elements { background: #f8f5f1; }
+    .element-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .element-card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px 21px; min-height: 240px; }
+    .element-number { font-size: .75rem; letter-spacing: .15em; color: var(--orange-dark); direction: ltr; font-weight: 800; }
+    .element-symbol { height: 76px; display: flex; align-items: center; justify-content: flex-start; margin: 8px 0 12px; }
+    .symbol-square { width: 58px; height: 58px; background: var(--orange); display: grid; place-items: center; font-size: 2.5rem; font-weight: 950; direction: ltr; }
+    .symbol-arrow { font-size: 3.4rem; color: var(--orange); direction: ltr; font-weight: 900; }
+    .symbol-type { font-size: 2.3rem; font-weight: 950; letter-spacing: -.1em; direction: ltr; }
+    .symbol-field { font-size: .8rem; letter-spacing: .12em; color: var(--orange-dark); direction: ltr; font-weight: 800; }
+    .element-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .element-card p { margin: 0; font-size: .9rem; color: var(--muted); }
+
+    .palette-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .palette-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: white; }
+    .swatches { display: grid; grid-template-columns: 1fr 1fr; height: 180px; }
+    .swatch { display: flex; align-items: end; padding: 18px; font-size: .78rem; font-weight: 800; direction: ltr; }
+    .swatch.orange { background: var(--orange); color: #17120c; }
+    .swatch.black { background: #050505; color: white; }
+    .swatch.white { background: #fff; color: #111; border: 1px solid #eee; }
+    .swatch.gray { background: #eeeae5; color: #4c4742; }
+    .palette-info { padding: 23px 25px; }
+    .palette-info h3 { margin: 0 0 6px; }
+    .palette-info p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .type-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; align-items: center; }
+    .type-sample { direction: ltr; font-size: clamp(3rem, 8vw, 6.7rem); line-height: 1; font-weight: 900; letter-spacing: -.08em; }
+    .type-sample span { color: var(--orange); }
+    .type-copy { border-right: 3px solid var(--orange); padding-right: 24px; }
+    .type-copy h3 { margin: 0 0 10px; }
+    .type-copy p { margin: 0; color: var(--muted); }
+
+    .applications { background: var(--ink); color: white; }
+    .applications .section-head p { color: #b7b2ac; }
+    .mockup-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+    .mockup { border-radius: 20px; padding: 24px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+    .mockup.light { background: #f7f3ee; color: #111; }
+    .mockup.orange-bg { background: var(--orange); color: #111; }
+    .mockup.black-bg { background: #070707; border: 1px solid #383838; color: white; }
+    .mockup-label { font-size: .7rem; letter-spacing: .16em; direction: ltr; opacity: .65; }
+    .mock-logo-image { display: block; width: 100%; max-width: 300px; height: 130px; object-fit: contain; object-position: left center; }
+    .mock-caption { font-size: .8rem; opacity: .72; letter-spacing: .15em; direction: ltr; }
+
+    #mockups { display: block; position: relative; clear: both; padding: 90px 0; background: #f4f0eb; color: var(--ink); }
+    #mockups .section-head p { color: var(--muted); }
+    .uploaded-mockups-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .uploaded-mockup-card { background: #fff; border: 1px solid rgba(30,24,18,.08); border-radius: 18px; padding: 14px; box-shadow: 0 12px 34px rgba(37,28,18,.07); overflow: hidden; }
+    .uploaded-mockup-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 5px 5px 14px; color: #77716b; font-size: .72rem; }
+    .uploaded-mockup-caption span:first-child { direction: ltr; letter-spacing: .11em; font-weight: 800; }
+    .uploaded-mockup-card img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 10px; background: #f0eeeb; }
+    .uploaded-mockup-card p { margin: 14px 5px 5px; color: #6f6962; font-size: .9rem; line-height: 1.8; }
+
+    .footer { padding: 35px 0; background: var(--paper); border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: #77716b; font-size: .82rem; }
+    .footer strong { color: var(--ink); direction: ltr; letter-spacing: .15em; }
+
+    @media (max-width: 850px) {
+      .nav-links { display: none; }
+      .hero { min-height: auto; padding: 70px 0; }
+      section { padding: 72px 0; }
+      .story-grid, .type-layout { grid-template-columns: 1fr; }
+      .element-grid { grid-template-columns: repeat(2, 1fr); }
+      .mockup-grid { grid-template-columns: 1fr; }
+      .type-copy { margin-top: 8px; }
+    }
+    @media (max-width: 560px) {
+      .nav { min-height: 62px; }
+      .logo-stage { min-height: 190px; padding: 20px; border-radius: 20px; }
+      .element-grid, .palette-grid, .mockup-grid, .uploaded-mockups-grid { grid-template-columns: 1fr; }
+      .element-card { min-height: auto; }
+      .swatches { height: 145px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a aria-label="BEIDA home" class="brand" href="#home">BEI<span>DA</span></a>
+    <nav aria-label="التنقل الرئيسي" class="nav-links">
+      <a href="#story">الفكرة</a>
+      <a href="#elements">عناصر اللوغو</a>
+      <a href="#colors">الألوان</a>
+      <a href="#typography">الخط</a>
+      <a href="#applications">التطبيقات</a>
+      <a href="#mockups">الموكابس</a>
+    </nav>
+    <button class="nav-cta" onclick="window.print()">حفظ العرض PDF ↗</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <span class="eyebrow">Brand identity presentation</span>
+      <h1 class="sr-only">BEIDA</h1>
+      <div class="hero-subtitle">SOCIAL MEDIA AND ADS</div>
+      <div class="logo-stage">
+        <img alt="شعار BEIDA باللونين الأسود والبرتقالي" src="beida-logo-original.png"/>
+        <div class="logo-fallback">
+          <div class="word"><span class="bmark">B</span>eida</div>
+          <small>SOCIAL MEDIA AND ADS</small>
+        </div>
+      </div>
+      <p class="hero-note">هوية بصرية تنطلق من اسم المكان، وتحول رمزيته من صورة سلبية إلى رؤية أكثر إشراقًا وتميّزًا.</p>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">01 / THE IDEA</span>
+        <h2>من المكان إلى رؤية أفضل.</h2>
+        <p>فكرة الشعار لا تكتفي بتمثيل اسم الوكالة، بل تحوّل دلالة المكان إلى رسالة بصرية عن التغيير وصناعة صورة جديدة.</p>
+      </div>
+      <div class="story-grid">
+        <article class="story-card dark">
+          <div class="quote-mark">“</div>
+          <h3>بداية من واقع المكان</h3>
+          <p>يرتبط اسم «البيضاء» بالمكان الذي يُنتظر أن يحتضن مقر الوكالة. وقد ارتبط هذا المكان في نظر الناس بصورة غير إيجابية؛ لذلك يستحضر الجزء الأسود من حرف B هذه الدلالة بصريًا، دون أن يجعلها نهاية القصة.</p>
+        </article>
+        <article class="story-card">
+          <h3>السهم: التحوّل نحو الأفضل</h3>
+          <p>يشقّ السهم البرتقالي حرف B ويتجه إلى الخارج، فيرمز إلى الانطلاق والتغيير، وإلى رؤية أكثر إشراقًا ونظرة أجمل للمكان. ويمنح اللون البرتقالي نقطة تركيز واضحة تميّز الهوية وتدعم حضورها.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="elements" id="elements">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">02 / LOGO ELEMENTS</span>
+        <h2>كل عنصر يحمل معنى.</h2>
+        <p>يتكوّن الشعار من عناصر بسيطة ومترابطة، يجمعها مفهوم الانتقال من الدلالة السلبية إلى التغيير الإيجابي.</p>
+      </div>
+      <div class="element-grid">
+        <article class="element-card">
+          <span class="element-number">ELEMENT 01</span>
+          <div class="element-symbol"><span class="symbol-type">Beida</span></div>
+          <h3>اسم الوكالة</h3>
+          <p>اسم «Beida» هو العنصر الأساسي في الهوية، ويمنحها اسمًا واضحًا وسهل التعرّف والتذكّر.</p>
+        </article>
+        <article class="element-card">
+          <span class="element-number">ELEMENT 02</span>
+          <div class="element-symbol"><span class="symbol-square">B</span></div>
+          <h3>حرف B والمستطيل</h3>
+          <p>يمثّل حرف B الجزء المرتبط بالصورة السلبية للمكان، بينما يحدّد المستطيل البرتقالي المنطقة ويبرزها داخل التكوين.</p>
+        </article>
+        <article class="element-card">
+          <span class="element-number">ELEMENT 03</span>
+          <div class="element-symbol"><span class="symbol-arrow">➜</span></div>
+          <h3>السهم البرتقالي</h3>
+          <p>يرمز إلى الانطلاق، وتغيير الصورة الذهنية، والتوجّه نحو واقع أفضل ورؤية أجمل للمكان.</p>
+        </article>
+        <article class="element-card">
+          <span class="element-number">ELEMENT 04</span>
+          <div class="element-symbol"><span class="symbol-field">SOCIAL MEDIA<br/>AND ADS</span></div>
+          <h3>المجال</h3>
+          <p>العبارة أسفل الاسم توضّح اختصاص الوكالة في مجال وسائل التواصل الاجتماعي والإعلانات.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="colors">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">03 / COLOR SYSTEM</span>
+        <h2>تباين واضح، وحضور لا يُنسى.</h2>
+        <p>يعتمد الشعار على الأسود والبرتقالي والأبيض؛ لتكوين تباين قوي يحافظ على الوضوح ويُسهّل استخدام الهوية في تطبيقات مختلفة.</p>
+      </div>
+      <div class="palette-grid">
+        <article class="palette-card">
+          <div class="swatches">
+            <div class="swatch orange">ORANGE · #F58A1F</div>
+            <div class="swatch black">BLACK · #050505</div>
+          </div>
+          <div class="palette-info">
+            <h3>الألوان الأساسية</h3>
+            <p>البرتقالي يلفت الانتباه ويعبّر عن الحركة والتغيير، والأسود يوفّر الثقل البصري والتباين، فيما يساعد الأبيض على إبراز الشعار في المساحات النظيفة.</p>
+          </div>
+        </article>
+        <article class="palette-card">
+          <div class="swatches">
+            <div class="swatch white">WHITE · #FFFFFF</div>
+            <div class="swatch gray">WARM GRAY · #EEEAE5</div>
+          </div>
+          <div class="palette-info">
+            <h3>ألوان مساندة للعرض</h3>
+            <p>الأبيض والرمادي الدافئ مناسبان للخلفيات والصفحات التعريفية، مع الحفاظ على ألوان الشعار الأساسية دون تغيير.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="typography">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">04 / TYPOGRAPHY</span>
+        <h2>خطّ عصري وواضح.</h2>
+      </div>
+      <div class="type-layout">
+        <div class="type-sample">BEI<span>DA</span></div>
+        <div class="type-copy">
+          <h3>ORKNEY</h3>
+          <p>تم اختيار خط ORKNEY لأسلوبه الهندسي والعصري، ولما يمنحه من وضوح وحضور قوي للاسم. يُفضّل استخدام الخط نفسه في التطبيقات التي يتوفر فيها، مع الحفاظ على تناسب الأحجام والمسافات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="applications" id="applications">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">05 / BRAND APPLICATIONS</span>
+        <h2>هوية مرنة في أكثر من سياق.</h2>
+        <p>تساعد بساطة التكوين والتباين بين الأسود والبرتقالي على تكييف الهوية مع خلفيات مختلفة.</p>
+      </div>
+      <div class="mockup-grid">
+        <div class="mockup light">
+          <span class="mockup-label">01 / WHITE BACKGROUND</span>
+          <img alt="شعار BEIDA على خلفية بيضاء" class="mock-logo-image" src="beida-logo-white.png"/>
+          <span class="mock-caption">SOCIAL MEDIA AND ADS</span>
+        </div>
+        <div class="mockup black-bg">
+          <span class="mockup-label">02 / BLACK BACKGROUND</span>
+          <img alt="شعار BEIDA على خلفية سوداء" class="mock-logo-image" src="beida-logo-black-bg.png"/>
+          <span class="mock-caption">SOCIAL MEDIA AND ADS</span>
+        </div>
+        <div class="mockup orange-bg">
+          <span class="mockup-label">03 / ORANGE BACKGROUND</span>
+          <img alt="شعار BEIDA على خلفية برتقالية" class="mock-logo-image" src="beida-logo-orange-bg.png"/>
+          <span class="mock-caption">SOCIAL MEDIA AND ADS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mockups">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">06 / BRAND MOCKUPS</span>
+        <h2>BEIDA في تطبيقات واقعية.</h2>
+        <p>تصوّر بصري لتطبيق الهوية على واجهة الوكالة، منصات التواصل، بطاقات الأعمال، وفضاء العمل.</p>
+      </div>
+      <div class="uploaded-mockups-grid">
+        <article class="uploaded-mockup-card">
+          <div class="uploaded-mockup-caption"><span>01 / EXTERIOR SIGNAGE</span><span>لافتة خارجية</span></div>
+          <img alt="شعار BEIDA على لافتة خارجية" loading="lazy" src="mockup-signage.png"/>
+          <p>تطبيق الشعار على لافتة خارجية عند مدخل الوكالة.</p>
+        </article>
+        <article class="uploaded-mockup-card">
+          <div class="uploaded-mockup-caption"><span>02 / SOCIAL MEDIA</span><span>منصات التواصل</span></div>
+          <img alt="هوية BEIDA في منشورات التواصل الاجتماعي" loading="lazy" src="mockup-social-media.png"/>
+          <p>عرض الهوية في منشورات المحتوى الرقمي وحسابات التواصل الاجتماعي.</p>
+        </article>
+        <article class="uploaded-mockup-card">
+          <div class="uploaded-mockup-caption"><span>03 / BUSINESS CARDS</span><span>بطاقات الأعمال</span></div>
+          <img alt="شعار BEIDA على بطاقات أعمال" loading="lazy" src="mockup-cards.png"/>
+          <p>تطبيق الألوان والشعار على بطاقات الأعمال المطبوعة.</p>
+        </article>
+        <article class="uploaded-mockup-card">
+          <div class="uploaded-mockup-caption"><span>04 / OFFICE INTERIOR</span><span>داخل المكتب</span></div>
+          <img alt="شعار BEIDA على جدار المكتب" loading="lazy" src="mockup-office.png"/>
+          <p>تصوّر للشعار بحروف بارزة داخل مقر الوكالة.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><strong>BEIDA</strong> — Social Media and Ads</div>
+    <div>جميع الحقوق محفوظة © 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
